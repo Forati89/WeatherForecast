@@ -7,7 +7,8 @@ export default class WeatherDataContainer extends Component{
     {
         super(props);
         this.state = {
-            weatherdata: [],
+            weatherdata: [ ],
+            weatherTemp: [],
             isLoaded: true
         }
     }
@@ -17,7 +18,8 @@ export default class WeatherDataContainer extends Component{
         const url = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,swe&appid=9abd7b5ca967276c7580776343f41010";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({weatherdata: data, isLoaded: false })
+        this.setState({weatherdata: data, isLoaded: false, weatherTemp: data.main })
+        
     }
     
     
@@ -25,12 +27,7 @@ export default class WeatherDataContainer extends Component{
     {
         return(
             <div>
-                { 
-                    this.state.isLoaded  || !this.state.weatherdata ? (
-                        <div>loading...</div>
-                    ) : ( 
-                      <WeatherDataList weatherdata = {this.state.weatherdata}/>
-                    )}
+            <WeatherDataList />
             </div>
         
         );
