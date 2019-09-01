@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import WeatherDataList from './WeatherDataList';
 
 export default class WeatherDataContainer extends Component{
 
@@ -7,40 +8,33 @@ export default class WeatherDataContainer extends Component{
         super(props);
         this.state = {
             weatherdata: [],
-            isLoaded: false
+            isLoaded: true
         }
     }
 
-    componentDidMount()
+    async componentDidMount()
     {
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=9abd7b5ca967276c7580776343f41010')
-        .then(res => res.json())
-        .then(json => {
-            this.setState({
-            isLoaded: true,
-            weatherdata: json
-        })
-    });
+        const url = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,swe&appid=9abd7b5ca967276c7580776343f41010";
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({weatherdata: data, isLoaded: false })
     }
+    
     
     render()
     {
-        var {isLoaded, weatherdata} = this.state;
-        if(!isLoaded)
-        {
-            return (<div>nothing yet...</div>)
-        }
-        else
-        {
         return(
-        <div>
-        <h4>Data Loaded</h4>
-        <ul>
-            {weatherdata.map(data => (
-                <li>{data}</li>
-            ))};
-        </ul>
-        </div>);
+            <div>
+                { 
+                    this.state.isLoaded  || !this.state.weatherdata ? (
+                        <div>loading...</div>
+                    ) : ( 
+                      <WeatherDataList weatherdata = {this.state.weatherdata}/>
+                    )}
+            </div>
+        
+        );
+            
+
     }
-}
 }
