@@ -5,12 +5,18 @@ export default class WeatherDataList extends Component{
 
     render()
     {
-        let items = this.props.weatherdata.weather.map(weatherdata =>{
+        let weatherDetails = this.props.weatherdata.weather.map(weatherdata =>{
             return (<WeatherDataItem weatherdata = {weatherdata}/>);
+            
+        });
+        let weatherTemp = this.props.weatherdata.main.map(weathertemp =>{
+            return (<WeatherDataItem weathertemp = {weathertemp}/>);
+            
         });
         return(
             <div>
-                <div>{items}</div>
+                <div>{weatherDetails}</div>
+                <div>{weatherTemp}</div>
             </div>
         );
     }

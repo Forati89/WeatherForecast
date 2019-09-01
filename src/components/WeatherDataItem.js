@@ -9,6 +9,9 @@ export default class BlogListItem extends Component{
             <div style={{border:"solid"}}>
             <h3>{this.props.weatherdata.id}</h3>
             <p>{this.props.weatherdata.description}</p>
+            <p>{this.props.weathertemp.humidity}</p>
+            
+
             </div>
         </React.Fragment>);
     }
