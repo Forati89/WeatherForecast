@@ -1,21 +1,27 @@
 import React, {Component} from 'react';
 import WeatherDataItem from './WeatherDataItem';
+import WeatherFiveDay from './WeatherFiveDay'
 
 export default class WeatherDataList extends Component{
 
     render()
     {
-        let weatherDetails = this.props.weatherTemp.map(weatherTemp =>{
-            return (<WeatherDataItem weatherTemp = {weatherTemp}/>);
-            
-        });
-        // let weatherTemp = this.props.weatherdata.main.map(weathertemp =>{
-        //     return (<WeatherDataItem weathertemp = {weathertemp}/>);
-            
-        // });
+        // getting temp details from props
+        let tempDetails = this.props.temp;
+        let weatherDataD = this.props.data;
+        let five = this.props.fiveDays;
+
+
+        //render props to Container
         return(
             <div>
-                <div>{weatherDetails}</div>
+               <WeatherDataItem
+                temp = {tempDetails}
+                data = {weatherDataD}
+                />
+                <WeatherFiveDay
+                fiveDays = {five}
+                 />
             </div>
         );
     }

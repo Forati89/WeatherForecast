@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
+import {Button, Container, Row, Col} from 'react-bootstrap';
 
 export default class WeatherDataItem extends Component{
 
 
     render()
     {
-        return(<React.Fragment>
-            <div style={{border:"solid"}}>
-                <p>{this.props.weatherTemp.temp}</p>
-                <p>{this.props.weatherTemp.temp_min}</p>
-                <p>{this.props.weatherTemp.temp_max}</p>
-            </div>
+        console.log(this.props.temp) // ???
+        return(<div>
+            <Container>
+                <Row>
+                <Col>
+                
+                        <p>{this.props.temp.temp_c}</p>
+                     <Button variant="primary">Primary</Button>
+           
+                     </Col>
+                     <Col>Hello World</Col>
+                </Row>
+            </Container>
+
          
-        </React.Fragment>);
+        </div>);
     }
 }
