@@ -12,7 +12,7 @@ function App() {
         
       </Row>
       <Row>
-      <Col> <WeatherDataContainer /> </Col>
+      <Col className="text-center my-auto"> <WeatherDataContainer /> </Col>
       </Row>
       <Container>
         <Row>
