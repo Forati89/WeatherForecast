@@ -6,21 +6,15 @@ export default class WeatherDataItem extends Component{
 
     render()
     {
-        console.log(this.props.temp) // ???
-        return(<div>
-            <Container>
+        console.log(this.props.data)
+        return(<React.Fragment>
                 <Row>
                 <Col>
-                
-                        <p>{this.props.temp.temp_c}</p>
-                     <Button variant="primary">Primary</Button>
-           
-                     </Col>
+                </Col>
                      <Col>Hello World</Col>
                 </Row>
-            </Container>
 
          
-        </div>);
+        </React.Fragment>);
     }
 }
