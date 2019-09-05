@@ -1,17 +1,28 @@
-import React, {Component} from 'react';
-import WeatherDataItem from './WeatherDataItem';
-import WeatherFiveDay from './WeatherFiveDay'
+import React, { Component } from 'react';
+import { Row, Col, Image } from 'react-bootstrap';
 
-export default class WeatherDataList extends Component{
+export default class WeatherDataList extends Component {
 
-    render()
-    {
+    render() {
 
         //render props to Container
-        return(
-            <div>
-                {this.props.d1MXT}
-            </div>
+        return (
+            <React.Fragment>
+                <Row>
+                    <Col>
+                    <h1>{this.props.currCNM}</h1>
+                    <h3><b>{this.props.currCLTMP} &#8451;</b></h3>
+                    <Image src={this.props.currWICON} rounded />
+
+                    </Col>
+                    <Col>
+                    <h5>Lokal Tid & Datum</h5>
+                    <h3>{this.props.currCLT}</h3>
+                    </Col>
+
+                </Row>
+                
+            </React.Fragment>
         );
     }
 }
